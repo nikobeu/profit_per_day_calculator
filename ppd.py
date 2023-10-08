@@ -49,13 +49,13 @@ elif auswahl == "z":
     start = input("start angeben : ")
     ziel = input("Ziel eingeben : ")
     ppd = input("wass ist ein realistischer profit in % pro tag : ")
-    tagen = 0
+    tagen = 1
     listename = f"von {str(start)} mit {str(ppd)} % bis {str(ziel)} liste.txt"
 
     if liste == True:
         file = open(str(listename), "a")
         file.write(f"von {str(start)} mit {str(ppd)} % bis {str(ziel)} : \n")
-        file.write(f"tag : {str(tagen)} : geld : {str(start)} \n")
+        file.write(f"tag : 0 : geld : {str(start)} \n")
         file.close()
     else:
         print("du hast dich gegen die liste entschieden")
@@ -83,9 +83,8 @@ elif auswahl == "t":
     start = input("startpunkt eingeben : ")
     ziel = input("gib dein ziel ein : ")
     tage = input("wie viele tage hast du zeit : ")
-
     listename = f"von {str(start)} zu {str(ziel)} in {str(tage)} tagen liste.txt"
-
+    tagerechn1 = float(tage) + 1
 
     A = float(start)
     E = float(ziel)
@@ -100,10 +99,20 @@ elif auswahl == "t":
         file = open(str(listename), "a")
         file.write(f"von {str(start)} zu {str(ziel)} in {str(tage)} benötigt : {str(prozr)} % \n")
         file.write(f"das Kapital würde so aussehen : \n")
-
         file.close()
-    else:
-        print("es braucht ca.", str(prozr), "% pro tag")
+
+        tagedone = 0
+
+        profitber = (float(proz) / 100) + 1
+        while float(tagedone) < float(tagerechn1):
+            if liste == True:
+                file = open(str(listename), "a")
+                file.write(f"tag {str(tagedone)} : {str(start)} \n")
+                file.close()
+            start = float(start) * float(profitber)
+            tagedone += 1
+
+    print("es braucht ca.", str(prozr), "% pro tag")
 
 else:
     print("fehler bitte drücke nur z oder t oder b")
