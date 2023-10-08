@@ -1,4 +1,7 @@
-# days calc
+
+import os
+
+
 liste = False
 sauswahl = input("willst du deín ergebnis speichern ? JA/Nein :").lower()
 
@@ -24,9 +27,13 @@ if auswahl == "b":
     listename = f"von {str(start)} mit {str(ppd)} % für {str(tage)} tage liste.txt"
 
     if liste == True:
-        file = open(str(listename), "a")
-        file.write(f"von {str(start)} mit {str(ppd)} % für {str(tage)} tage : \n")
-        file.close()
+        if os.path.exists(listename):
+            print("genau diese datei gibt es bereits")
+            liste = False
+        else:
+            file = open(str(listename), "a")
+            file.write(f"von {str(start)} mit {str(ppd)} % für {str(tage)} tage : \n")
+            file.close()
     else:
         print("du hast dich gegen die liste entschieden")
 
@@ -53,10 +60,14 @@ elif auswahl == "z":
     listename = f"von {str(start)} mit {str(ppd)} % bis {str(ziel)} liste.txt"
 
     if liste == True:
-        file = open(str(listename), "a")
-        file.write(f"von {str(start)} mit {str(ppd)} % bis {str(ziel)} : \n")
-        file.write(f"tag : 0 : geld : {str(start)} \n")
-        file.close()
+        if os.path.exists(listename):
+            print("genau diese datei gibt es bereits")
+            liste = False
+        else:
+            file = open(str(listename), "a")
+            file.write(f"von {str(start)} mit {str(ppd)} % bis {str(ziel)} : \n")
+            file.write(f"tag : 0 : geld : {str(start)} \n")
+            file.close()
     else:
         print("du hast dich gegen die liste entschieden")
 
@@ -96,10 +107,14 @@ elif auswahl == "t":
     prozr = round(proz, 2)
 
     if liste == True:
-        file = open(str(listename), "a")
-        file.write(f"von {str(start)} zu {str(ziel)} in {str(tage)} benötigt : {str(prozr)} % \n")
-        file.write(f"das Kapital würde so aussehen : \n")
-        file.close()
+        if os.path.exists(listename):
+            print("genau diese datei gibt es bereits")
+            liste = False
+        else:
+            file = open(str(listename), "a")
+            file.write(f"von {str(start)} zu {str(ziel)} in {str(tage)} benötigt : {str(prozr)} % \n")
+            file.write(f"das Kapital würde so aussehen : \n")
+            file.close()
 
         tagedone = 0
 
