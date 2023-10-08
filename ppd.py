@@ -1,7 +1,4 @@
-
 import os
-
-
 liste = False
 sauswahl = input("willst du deín ergebnis speichern ? JA/Nein :").lower()
 
@@ -38,17 +35,20 @@ if auswahl == "b":
         print("du hast dich gegen die liste entschieden")
 
     tagedone = 0
+    startr = 0
 
     profitber = (float(ppd) / 100) + 1
     while float(tagedone) < float(tagerechn1):
+        startr = round(float(start), 2)
         if liste == True:
             file = open(str(listename), "a")
-            file.write(f"tag {str(tagedone)} : {str(start)} \n")
+            file.write(f"tag {str(tagedone)} : {str(startr)} \n")
             file.close()
         start = float(start) * float(profitber)
         tagedone += 1
 
-    print(str(start), "bei", str(ppd), "%")
+    print(str(startr), "bei", str(ppd), "%")
+    input("")
 
 
 elif auswahl == "z":
@@ -57,6 +57,7 @@ elif auswahl == "z":
     ziel = input("Ziel eingeben : ")
     ppd = input("wass ist ein realistischer profit in % pro tag : ")
     tagen = 1
+    startr = 0
     listename = f"von {str(start)} mit {str(ppd)} % bis {str(ziel)} liste.txt"
 
     if liste == True:
@@ -77,16 +78,18 @@ elif auswahl == "z":
         rechn1 = (float(ppd) / 100) + 1
 
         while float(start) < float(ziel):
+            startr = round(float(start), 2)
             start = float(start) * float(rechn1)
             if liste == True:
                 file = open(str(listename), "a")
-                file.write(f"tag : {str(tagen)} : geld : {str(start)} \n")
+                file.write(f"tag : {str(tagen)} : geld : {str(startr)} \n")
                 file.close()
             tagen += 1
         if float(start) > float(ziel):
             print(end="")
 
         print("es braucht ", str(tagen), "tag(e) bis du ", str(ziel), "erreicht hast")
+        input("")
 
         # print(float(start), float(ziel), float(ppd))
 elif auswahl == "t":
@@ -96,6 +99,12 @@ elif auswahl == "t":
     tage = input("wie viele tage hast du zeit : ")
     listename = f"von {str(start)} zu {str(ziel)} in {str(tage)} tagen liste.txt"
     tagerechn1 = float(tage) + 1
+    mindtage = 1
+    if str(tage) < str(mindtage) :
+        print("du hast zu wenig tage eingegeben bitte versuche es erneut")
+        tage = input("tage wiederholen : ")
+    else:
+        print(end="")
 
     A = float(start)
     E = float(ziel)
@@ -117,17 +126,20 @@ elif auswahl == "t":
             file.close()
 
         tagedone = 0
+        startr = 0
 
         profitber = (float(proz) / 100) + 1
         while float(tagedone) < float(tagerechn1):
+            startr = round(float(start), 2)
             if liste == True:
                 file = open(str(listename), "a")
-                file.write(f"tag {str(tagedone)} : {str(start)} \n")
+                file.write(f"tag {str(tagedone)} : {str(startr)} \n")
                 file.close()
             start = float(start) * float(profitber)
             tagedone += 1
 
     print("es braucht ca.", str(prozr), "% pro tag")
-
+    input("")
 else:
     print("fehler bitte drücke nur z oder t oder b")
+    input("")
