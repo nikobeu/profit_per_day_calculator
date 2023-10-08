@@ -1,7 +1,6 @@
 import os
 liste = False
 sauswahl = input("willst du deín ergebnis speichern ? JA/Nein :").lower()
-
 if sauswahl == "ja":
     liste = True
 else:
