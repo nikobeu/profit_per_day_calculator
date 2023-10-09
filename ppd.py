@@ -15,7 +15,6 @@ if not os.path.exists(rf"{str(parent_directory)}\start_ppd.cmd"):
 else :
 
     liste = False
-
     sauswahl = input("willst du deín ergebnis speichern ? JA/Nein :").lower()
 
     if sauswahl == "ja":
