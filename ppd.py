@@ -10,6 +10,7 @@ nstart = (rf"start {str(parent_directory)}\start_ppd.cmd")
 
 jsonfile = (rf"{str(parent_directory)}\safe_data.json")
 
+
 if not os.path.exists(rf"{str(parent_directory)}\start_ppd.cmd"):
     file = open("start_ppd.cmd", "a")
     file.write(f"@echo off\n\n")
@@ -21,7 +22,9 @@ if not os.path.exists(rf"{str(parent_directory)}\start_ppd.cmd"):
 else:
     if not os.path.exists(rf"{str(parent_directory)}\safe_data.json"):
         file = open("safe_data.json", "a")
-        file.write("{\n}")
+        file.write("{\n")
+        file.write(f"\"var_1\": 0\n")
+        file.write("}")
         file.close()
 
     idiotentest = True
@@ -132,13 +135,19 @@ else:
 
                 tagedone = 0
                 startr = 0
-
+                startold = start
+                profitactuall = 0
                 profitber = (float(ppd) / 100) + 1
+                profitactuallr = 0
+
                 while float(tagedone) < float(tagerechn1):
-                    startr = round(float(start), 2)
+                    profitactuall = (float(start) - float(startold))
+                    startold = start
+                    profitactuallr = round(float(profitactuall), 2)
+                    startr = round(float(startold), 2)
                     if liste == True:
                         file = open(str(listename), "a")
-                        file.write(f"tag {str(tagedone)} : {str(startr)} \n")
+                        file.write(f"tag {str(tagedone)} : {str(startr)}  (+{float(profitactuallr)}$) \n")
                         file.close()
                     start = float(start) * float(profitber)
                     tagedone += 1
@@ -158,7 +167,7 @@ else:
             start = input("start angeben : ")
             ziel = input("Ziel eingeben : ")
             ppd = input("wass ist ein realistischer profit in % pro tag : ")
-            tagen = 1
+            tagen = 0
             startr = 0
 
             if start == "x":
@@ -195,7 +204,6 @@ else:
                     else:
                         file = open(str(listename), "a")
                         file.write(f"von {str(start)} mit {str(ppd)} % bis {str(ziel)} : \n")
-                        file.write(f"tag : 0 : {str(start)} \n")
                         file.close()
                 else:
                     print("du hast dich gegen die liste entschieden")
@@ -204,21 +212,27 @@ else:
                     print("der startpunkt ist zu klein!")
                 else:
                     rechn1 = (float(ppd) / 100) + 1
+                    startold = start
+                    profitactuall = 0
+                    profitactuallr = 0
 
                     while float(start) < float(ziel):
-                        startr = round(float(start), 2)
+                        profitactuall = (float(start) - float(startold))
+                        startold = start
+                        profitactuallr = round(float(profitactuall), 2)
+                        startr = round(float(startold), 2)
                         start = float(start) * float(rechn1)
                         if liste == True:
                             file = open(str(listename), "a")
-                            file.write(f"tag : {str(tagen)} : {str(startr)} \n")
+                            file.write(f"tag : {str(tagen)} : {str(startr)}  (+{float(profitactuallr)}$) \n")
                             file.close()
                         tagen += 1
                     if float(start) > float(ziel):
-                        print("")
-
+                        profitactuallrest = (float(ziel) - float(startold))
+                        profitactuallrestr = round(float(profitactuallrest), 2)
                         if liste == True:
                             file = open(str(listename), "a")
-                            file.write(f"tag : {str(tagen)} : {str(ziel)} \n")
+                            file.write(f"tag : {str(tagen)} : {str(ziel)}  (+{float(profitactuallrestr)}$) \n")
                             file.close()
 
                     print("es braucht ", str(tagen), "tag(e) bis du ", str(ziel), "erreicht hast")
@@ -287,20 +301,26 @@ else:
                         print("genau diese datei gibt es bereits")
                         liste = False
                     else:
-                        file = open(str(listename), "a")
+                        file = open(str(listename), "a", encoding='utf-8')
                         file.write(f"von {str(start)} zu {str(ziel)} in {str(tage)} benötigt : {str(prozr)} % \n")
                         file.write(f"das Kapital würde so aussehen : \n")
                         file.close()
 
                     tagedone = 0
                     startr = 0
-
+                    tagen = 0
+                    startold = start
+                    profitactuall = 0
+                    profitactuallr = 0
                     profitber = (float(proz) / 100) + 1
                     while float(tagedone) < float(tagerechn1):
-                        startr = round(float(start), 2)
+                        profitactuall = (float(start) - float(startold))
+                        startold = start
+                        profitactuallr = round(float(profitactuall), 2)
+                        startr = round(float(startold), 2)
                         if liste == True:
                             file = open(str(listename), "a")
-                            file.write(f"tag {str(tagedone)} : {str(startr)} \n")
+                            file.write(f"tag {str(tagedone)} : {str(startr)}  (+{float(profitactuallr)}$) \n")
                             file.close()
                         start = float(start) * float(profitber)
                         tagedone += 1
