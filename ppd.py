@@ -1,6 +1,7 @@
 import os
 liste = False
 sauswahl = input("willst du deín ergebnis speichern ? JA/Nein :").lower()
+
 if sauswahl == "ja":
     liste = True
 else:
@@ -47,7 +48,7 @@ if auswahl == "b":
         tagedone += 1
 
     print(str(startr), "bei", str(ppd), "%")
-    input("")
+    input("zum schließen irgendeine taste drücken")
 
 
 elif auswahl == "z":
@@ -87,8 +88,13 @@ elif auswahl == "z":
         if float(start) > float(ziel):
             print(end="")
 
+            if liste == True:
+                file = open(str(listename), "a")
+                file.write(f"tag : {str(tagen)} : geld : {str(ziel)} \n")
+                file.close()
+
         print("es braucht ", str(tagen), "tag(e) bis du ", str(ziel), "erreicht hast")
-        input("")
+        input("zum schließen irgendeine taste drücken")
 
         # print(float(start), float(ziel), float(ppd))
 elif auswahl == "t":
@@ -99,7 +105,8 @@ elif auswahl == "t":
     listename = f"von {str(start)} zu {str(ziel)} in {str(tage)} tagen liste.txt"
     tagerechn1 = float(tage) + 1
     mindtage = 1
-    if str(tage) < str(mindtage) :
+
+    if float(tage) < float(mindtage) :
         print("du hast zu wenig tage eingegeben bitte versuche es erneut")
         tage = input("tage wiederholen : ")
     else:
@@ -138,7 +145,7 @@ elif auswahl == "t":
             tagedone += 1
 
     print("es braucht ca.", str(prozr), "% pro tag")
-    input("")
+    input("zum schließen irgendeine taste drücken")
 else:
     print("fehler bitte drücke nur z oder t oder b")
-    input("")
+    input("zum schließen irgendeine taste drücken")
