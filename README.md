@@ -1,0 +1,1 @@
+ppd ist nur ein kleines projekt wass den **P**rofit **P**er **D**ay ausrechnet den es braucht um auf einen bestimmten betrag zu kommen ich selbst bin ein kleiner unbekannter code lehrling also **nichts** ernst nehmen, danke :>
