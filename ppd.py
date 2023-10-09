@@ -8,6 +8,8 @@ parent_directory = os.path.dirname(script_path)
 
 nstart = (rf"start {str(parent_directory)}\start_ppd.cmd")
 
+jsonfile = (rf"{str(parent_directory)}\safe_data.json")
+
 if not os.path.exists(rf"{str(parent_directory)}\start_ppd.cmd"):
     file = open("start_ppd.cmd", "a")
     file.write(f"@echo off\n\n")
@@ -19,7 +21,7 @@ if not os.path.exists(rf"{str(parent_directory)}\start_ppd.cmd"):
 else:
     if not os.path.exists(rf"{str(parent_directory)}\safe_data.json"):
         file = open("safe_data.json", "a")
-        file.write(f"hihi")
+        file.write("{\n}")
         file.close()
 
     idiotentest = True
@@ -43,6 +45,14 @@ else:
         os.system(nstart)
         exit()
     else:
+        file = open("safe_data.json", "r")
+        jsonlesen = file.read()
+        file.close()
+        jsonlesbar = jsonlesen.replace("\n", "")
+        jsoncmd = json.loads(jsonlesbar)
+        availablejson = (f"s")
+
+        print(str(availablejson))
         liste = False
         print("wenn du stoppen willst drücke zu dem zeitpunkt x und wenn du irgendwann neustarten willst drücke n")
         sauswahl = input("willst du deín ergebnis speichern ? JA/Nein :").lower()
@@ -59,13 +69,13 @@ else:
         else:
             liste = False
         auswahl = input(
-            "drücke z zum ziel berechnen oder b zum berechnen vom endergebnis oder t für eine anzahl an tagen : ").lower()
+            "drücke z zum ziel berechnen oder b zum berechnen vom endergebnis oder t für eine anzahl an tagen oder a für variablen : ").lower()
 
-        if sauswahl == "x":
+        if auswahl == "x":
             print("abgebrochen")
             input("zum schließen irgendeine taste drücken")
             exit()
-        elif sauswahl == "n":
+        elif auswahl == "n":
             print("neustart")
             os.system(nstart)
             exit()
@@ -304,7 +314,37 @@ else:
                 else:
                     input("zum schließen irgendeine taste drücken")
                     exit()
+        elif auswahl == "a":
+            print("du bist im variablen bereich")
+            addvarnam = input("gib den namen der variable ein : ").lower()
+            if addvarnam[0].isalpha() and all(char.isalnum() or char in ['-', '_'] for char in addvarnam[1:]):
+                addvarz = input(f"gebe den wert der variable {addvarnam} ein : ")
+                if addvarz.isdigit():
+                    print(f"deine variable heißt jetzt {addvarnam} und ist {addvarz} wert")
+                    file = open("safe_data.json", "r")
+                    jsonlesen = file.read()
+                    file.close()
+                    jsonlesbar = jsonlesen.replace("\n", "")
+                    newvar1 =jsonlesbar.replace("{", "")
+                    newvar2 = newvar1.replace("}", "")
+                    file = open(str(jsonfile), "w")
+                    file.write("{")
+                    file.write(f"\n{str(newvar2)},\"{str(addvarnam)}\": {str(addvarz)}\n")
+                    file.write("}")
+                    file.close()
 
+                else:
+                    print("Ungültige Eingabe. Bitte geben Sie beim wert nur Zahlen ein.")
+            else:
+                print("Ungültige Eingabe. Bitte benutze keine zahlen an erster stelle und keine sonderzeichen außer - und _")
+
+            neustart = input("n für neustart, irgendeine andere taste zum verlassen : ").lower()
+            if neustart == "n":
+                os.system(nstart)
+                exit()
+            else:
+                input("zum schließen irgendeine taste drücken")
+                exit()
         else:
             print("fehler bitte drücke nur z oder t oder b")
             neustart = input("drücke n zum erneuten versuchen : ").lower()
