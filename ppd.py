@@ -1,5 +1,6 @@
 import os
 import sys
+import json
 
 script_path = os.path.abspath(sys.argv[0])
 
@@ -16,6 +17,10 @@ if not os.path.exists(rf"{str(parent_directory)}\start_ppd.cmd"):
     exit()
 
 else:
+    if not os.path.exists(rf"{str(parent_directory)}\safe_data.json"):
+        file = open("safe_data.json", "a")
+        file.write(f"hihi")
+        file.close()
 
     idiotentest = True
     file = open("start_ppd.cmd", "r")
