@@ -1,4 +1,5 @@
 !wichtig!
+
 es gibt einen kleinen bug, bitte achtet darauf dass euer datein pfad keine leerzeichen enthällt (sonst ist das script unbenutzbar)
 
 bei ersten starten der datei bitte ein cmd fenster öffnen und dort "python ppd.py" eingeben ab da gibt es eine "start_ppd.cmd" als startdatei
