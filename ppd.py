@@ -86,7 +86,7 @@ elif auswahl == "z":
                 file.close()
             tagen += 1
         if float(start) > float(ziel):
-            print(end="")
+            print("")
 
             if liste == True:
                 file = open(str(listename), "a")
@@ -110,7 +110,7 @@ elif auswahl == "t":
         print("du hast zu wenig tage eingegeben bitte versuche es erneut")
         tage = input("tage wiederholen : ")
     else:
-        print(end="")
+        print("")
 
     A = float(start)
     E = float(ziel)
