@@ -38,7 +38,9 @@ else:
         os.system(nstart)
         exit()
     else:
+        exiting = False
         liste = False
+        print("wenn du stoppen willst drücke zu dem zeitpunkt x und wenn du irgendwann neustarten willst drücke n")
         sauswahl = input("willst du deín ergebnis speichern ? JA/Nein :").lower()
 
         if sauswahl == "ja":
@@ -67,7 +69,7 @@ else:
                     print("genau diese datei gibt es bereits")
                     liste = False
                 else:
-                    file = open(str(listename), "a")
+                    file = open(str(listename), "a", encoding='utf-8')
                     file.write(f"von {str(start)} mit {str(ppd)} % für {str(tage)} tage : \n")
                     file.close()
             else:
@@ -113,7 +115,7 @@ else:
                 else:
                     file = open(str(listename), "a")
                     file.write(f"von {str(start)} mit {str(ppd)} % bis {str(ziel)} : \n")
-                    file.write(f"tag : 0 : geld : {str(start)} \n")
+                    file.write(f"tag : 0 : {str(start)} \n")
                     file.close()
             else:
                 print("du hast dich gegen die liste entschieden")
@@ -128,7 +130,7 @@ else:
                     start = float(start) * float(rechn1)
                     if liste == True:
                         file = open(str(listename), "a")
-                        file.write(f"tag : {str(tagen)} : geld : {str(startr)} \n")
+                        file.write(f"tag : {str(tagen)} : {str(startr)} \n")
                         file.close()
                     tagen += 1
                 if float(start) > float(ziel):
@@ -136,7 +138,7 @@ else:
 
                     if liste == True:
                         file = open(str(listename), "a")
-                        file.write(f"tag : {str(tagen)} : geld : {str(ziel)} \n")
+                        file.write(f"tag : {str(tagen)} : {str(ziel)} \n")
                         file.close()
 
                 print("es braucht ", str(tagen), "tag(e) bis du ", str(ziel), "erreicht hast")
