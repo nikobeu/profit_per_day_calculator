@@ -5,17 +5,18 @@ script_path = os.path.abspath(sys.argv[0])
 
 parent_directory = os.path.dirname(script_path)
 
-command = (rf"start {str(parent_directory)}\start_ppd.cmd")
+nstart = (rf"start {str(parent_directory)}\start_ppd.cmd")
 
 if not os.path.exists(rf"{str(parent_directory)}\start_ppd.cmd"):
     file = open("start_ppd.cmd", "a")
     file.write(f"@echo off\n\n")
     file.write(rf"python {str(parent_directory)}\ppd.py")
     file.close()
-    os.system(command)
+    os.system(nstart)
     exit()
 
 else:
+
     idiotentest = True
     file = open("start_ppd.cmd", "r")
     idiotl1 = file.readline()
@@ -34,7 +35,7 @@ else:
         file.write(f"@echo off\n\n")
         file.write(rf"python {str(parent_directory)}\ppd.py")
         file.close()
-        os.system(command)
+        os.system(nstart)
         exit()
     else:
         liste = False
@@ -86,7 +87,14 @@ else:
                 tagedone += 1
 
             print(str(startr), "bei", str(ppd), "%")
-            input("zum schließen irgendeine taste drücken")
+
+            neustart = input("n für neustart, irgendeine andere taste zum verlassen : ").lower()
+            if neustart == "n":
+                os.system(nstart)
+                exit()
+            else:
+                input("zum schließen irgendeine taste drücken")
+                exit()
 
 
         elif auswahl == "z":
@@ -132,9 +140,15 @@ else:
                         file.close()
 
                 print("es braucht ", str(tagen), "tag(e) bis du ", str(ziel), "erreicht hast")
-                input("zum schließen irgendeine taste drücken")
 
-                # print(float(start), float(ziel), float(ppd))
+                neustart = input("n für neustart, irgendeine andere taste zum verlassen : ").lower()
+                if neustart == "n":
+                    os.system(nstart)
+                    exit()
+                else:
+                    input("zum schließen irgendeine taste drücken")
+                    exit()
+
         elif auswahl == "t":
             print("du bist im tage bereich")
             start = input("startpunkt eingeben : ")
@@ -183,8 +197,22 @@ else:
                     tagedone += 1
 
             print("es braucht ca.", str(prozr), "% pro tag")
-            input("zum schließen irgendeine taste drücken")
+
+            neustart = input("n für neustart, irgendeine andere taste zum verlassen : ").lower()
+            if neustart == "n":
+                os.system(nstart)
+                exit()
+            else:
+                input("zum schließen irgendeine taste drücken")
+                exit()
+
         else:
             print("fehler bitte drücke nur z oder t oder b")
-            input("zum schließen irgendeine taste drücken")
-input("lolsec")
+            neustart = input("drücke n zum erneuten versuchen : ").lower()
+            if neustart == "n":
+                os.system(nstart)
+                exit()
+            else:
+                input("zum schließen irgendeine taste drücken")
+                exit()
+input("durchgerutscht bitte debuggen")
