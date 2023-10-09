@@ -4,7 +4,7 @@ import json
 
 script_path = os.path.abspath(sys.argv[0])
 
-parent_directory = os.path.dirname(script_path)
+parent_directory = (os.path.dirname(script_path))
 
 nstart = (rf"start {str(parent_directory)}\start_ppd.cmd")
 
@@ -18,7 +18,6 @@ if not os.path.exists(rf"{str(parent_directory)}\start_ppd.cmd"):
     file.close()
     os.system(nstart)
     exit()
-
 else:
     if not os.path.exists(rf"{str(parent_directory)}\safe_data.json"):
         file = open("safe_data.json", "a")
@@ -55,7 +54,7 @@ else:
         jsoncmd = json.loads(jsonlesbar)
         availablejson = (f"s")
 
-        print(str(availablejson))
+        #print(str(availablejson))
         liste = False
         print("wenn du stoppen willst drücke zu dem zeitpunkt x und wenn du irgendwann neustarten willst drücke n")
         sauswahl = input("willst du deín ergebnis speichern ? JA/Nein :").lower()
