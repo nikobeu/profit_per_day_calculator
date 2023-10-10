@@ -36,13 +36,13 @@ else:
         idiotentest = False
     elif not idiotl2 == "\n":
         idiotentest = False
-    elif not idiotl3 == (rf"python {str(parent_directory)}\ppd.py"):
+    elif not idiotl3 == (rf"python {str(script_path)}"):
         idiotentest = False
 
     if idiotentest == False:
         file = open("start_ppd.cmd", "w")
         file.write(f"@echo off\n\n")
-        file.write(rf"python {str(parent_directory)}\ppd.py")
+        file.write(rf"python {str(script_path)}")
         file.close()
         os.system(nstart)
         exit()
