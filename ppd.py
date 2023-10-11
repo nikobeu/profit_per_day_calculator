@@ -13,7 +13,9 @@ today = datetime.datetime.now()
 
 todayuse = (f'{today.strftime("%d")}.{today.strftime("%m")}.{today.strftime("%Y")}')
 
-print(todayuse)
+tagep = False
+tageudatump = False
+datump = False
 
 while True:
     if not os.path.exists(rf"{str(parent_directory)}\safe_data.json"):
@@ -44,6 +46,13 @@ while True:
         pass
     elif sauswahl == "ja":
         liste = True
+        tagejn = input("möchtest du dass die anzahl der tage in der liste genannt werden (t) oder das datum (d) oder beides (td)").lower()
+        if tagejn == "td" or "dt":
+            tageudatump = True
+        elif tagejn == "d":
+            datump = True
+        else:
+            tagep = True
     else:
         liste = False
     auswahl = input(
@@ -99,7 +108,7 @@ while True:
                     liste = False
                 else:
                     file = open(str(listename), "a", encoding='utf-8')
-                    file.write(f"von {str(start)} mit {str(ppd)} % für {str(tage)} tage : \n")
+                    file.write(f"von {str(start)} mit {str(ppd)} % für {str(tage)} tage :\n")
                     file.close()
             else:
                 print("du hast dich gegen die liste entschieden")
@@ -117,9 +126,22 @@ while True:
                 profitactuallr = round(float(profitactuall), 2)
                 startr = round(float(startold), 2)
                 if liste == True:
-                    file = open(str(listename), "a")
-                    file.write(f"tag {str(tagedone)} : {str(startr)}  (+{float(profitactuallr)}$) \n")
-                    file.close()
+                    if tagep == True:
+                        file = open(str(listename), "a")
+                        file.write(f"tag{str(tagedone)} : {str(startr)}  (+{float(profitactuallr)}$) \n")
+                        file.close()
+                    elif datump == True:
+                        file = open(str(listename), "a")
+                        todayuse = (f'{today.strftime("%d")}.{today.strftime("%m")}.{today.strftime("%Y")}')
+                        today += datetime.timedelta(days=1)
+                        file.write(f"{str(todayuse)} : {str(startr)}  (+{float(profitactuallr)}$) \n")
+                        file.close()
+                    elif tageudatump == True:
+                        file = open(str(listename), "a")
+                        todayuse = (f'{today.strftime("%d")}.{today.strftime("%m")}.{today.strftime("%Y")}')
+                        today += datetime.timedelta(days=1)
+                        file.write(f"tag {str(tagedone)} / {str(todayuse)} : {str(startr)}  (+{float(profitactuallr)}$) \n")
+                        file.close()
                 start = float(start) * float(profitber)
                 tagedone += 1
 
@@ -190,9 +212,23 @@ while True:
                     startr = round(float(startold), 2)
                     start = float(start) * float(rechn1)
                     if liste == True:
-                        file = open(str(listename), "a")
-                        file.write(f"tag : {str(tagen)} : {str(startr)}  (+{float(profitactuallr)}$) \n")
-                        file.close()
+                        if tagep == True:
+                            file = open(str(listename), "a")
+                            file.write(f"tag{str(tagen)} : {str(startr)}  (+{float(profitactuallr)}$) \n")
+                            file.close()
+                        elif datump == True:
+                            file = open(str(listename), "a")
+                            todayuse = (f'{today.strftime("%d")}.{today.strftime("%m")}.{today.strftime("%Y")}')
+                            today += datetime.timedelta(days=1)
+                            file.write(f"{str(todayuse)} : {str(startr)}  (+{float(profitactuallr)}$) \n")
+                            file.close()
+                        elif tageudatump == True:
+                            file = open(str(listename), "a")
+                            todayuse = (f'{today.strftime("%d")}.{today.strftime("%m")}.{today.strftime("%Y")}')
+                            today += datetime.timedelta(days=1)
+                            file.write(
+                                f"tag {str(tagen)} / {str(todayuse)} : {str(startr)}  (+{float(profitactuallr)}$) \n")
+                            file.close()
                     tagen += 1
                 if float(start) > float(ziel):
                     profitactuallrest = (float(ziel) - float(startold))
@@ -282,9 +318,23 @@ while True:
                     profitactuallr = round(float(profitactuall), 2)
                     startr = round(float(startold), 2)
                     if liste == True:
-                        file = open(str(listename), "a")
-                        file.write(f"tag {str(tagedone)} : {str(startr)}  (+{float(profitactuallr)}$) \n")
-                        file.close()
+                        if tagep == True:
+                            file = open(str(listename), "a")
+                            file.write(f"tag{str(tagedone)} : {str(startr)}  (+{float(profitactuallr)}$) \n")
+                            file.close()
+                        elif datump == True:
+                            file = open(str(listename), "a")
+                            todayuse = (f'{today.strftime("%d")}.{today.strftime("%m")}.{today.strftime("%Y")}')
+                            today += datetime.timedelta(days=1)
+                            file.write(f"{str(todayuse)} : {str(startr)}  (+{float(profitactuallr)}$) \n")
+                            file.close()
+                        elif tageudatump == True:
+                            file = open(str(listename), "a")
+                            todayuse = (f'{today.strftime("%d")}.{today.strftime("%m")}.{today.strftime("%Y")}')
+                            today += datetime.timedelta(days=1)
+                            file.write(
+                                f"tag {str(tagedone)} / {str(todayuse)} : {str(startr)}  (+{float(profitactuallr)}$) \n")
+                            file.close()
                     start = float(start) * float(profitber)
                     tagedone += 1
 
