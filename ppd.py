@@ -9,15 +9,15 @@ parent_directory = (os.path.dirname(script_path))
 
 jsonfile = (rf"{str(parent_directory)}\safe_data.json")
 
-today = datetime.datetime.now()
-
-todayuse = (f'{today.strftime("%d")}.{today.strftime("%m")}.{today.strftime("%Y")}')
-
 tagep = False
 tageudatump = False
 datump = False
 
 while True:
+    today = datetime.datetime.now()
+
+    todayuse = (f'{today.strftime("%d")}.{today.strftime("%m")}.{today.strftime("%Y")}')
+
     if not os.path.exists(rf"{str(parent_directory)}\safe_data.json"):
         file = open("safe_data.json", "a")
         file.write("{\n")
@@ -234,9 +234,22 @@ while True:
                     profitactuallrest = (float(ziel) - float(startold))
                     profitactuallrestr = round(float(profitactuallrest), 2)
                     if liste == True:
-                        file = open(str(listename), "a")
-                        file.write(f"tag : {str(tagen)} : {str(ziel)}  (+{float(profitactuallrestr)}$) \n")
-                        file.close()
+                        if tagep == True:
+                            file = open(str(listename), "a")
+                            file.write(f"tag{str(tagen)} : {str(ziel)}  (+{float(profitactuallrestr)}$) \n")
+                            file.close()
+                        elif datump == True:
+                            file = open(str(listename), "a")
+                            todayuse = (f'{today.strftime("%d")}.{today.strftime("%m")}.{today.strftime("%Y")}')
+                            today += datetime.timedelta(days=1)
+                            file.write(f"{str(todayuse)} : {str(ziel)}  (+{float(profitactuallrestr)}$) \n")
+                            file.close()
+                        elif tageudatump == True:
+                            file = open(str(listename), "a")
+                            todayuse = (f'{today.strftime("%d")}.{today.strftime("%m")}.{today.strftime("%Y")}')
+                            today += datetime.timedelta(days=1)
+                            file.write(
+                                f"tag {str(tagen)} / {str(todayuse)} : {str(ziel)}  (+{float(profitactuallrestr)}$) \n")
 
                 print("es braucht ", str(tagen), "tag(e) bis du ", str(ziel), "erreicht hast")
 
