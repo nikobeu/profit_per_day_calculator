@@ -1,12 +1,19 @@
 import os
 import sys
 import json
+import datetime
 
 script_path = os.path.abspath(sys.argv[0])
 
 parent_directory = (os.path.dirname(script_path))
 
 jsonfile = (rf"{str(parent_directory)}\safe_data.json")
+
+today = datetime.datetime.now()
+
+todayuse = (f'{today.strftime("%d")}.{today.strftime("%m")}.{today.strftime("%Y")}')
+
+print(todayuse)
 
 while True:
     if not os.path.exists(rf"{str(parent_directory)}\safe_data.json"):
