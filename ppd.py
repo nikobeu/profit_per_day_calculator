@@ -37,7 +37,7 @@ while True:
     sauswahl = input("willst du deín ergebnis speichern ? JA/Nein :").lower()
     if sauswahl == "x":
         print("abgebrochen")
-        input("zum schließen irgendeine taste drücken")
+        input("sicher?")
         exit()
     elif sauswahl == "n":
         print("neustart")
@@ -51,7 +51,7 @@ while True:
 
     if auswahl == "x":
         print("abgebrochen")
-        input("zum schließen irgendeine taste drücken")
+        input("sicher?")
         exit()
     elif auswahl == "n":
         print("neustart")
@@ -68,7 +68,7 @@ while True:
 
         if start == "x":
             print("abgebrochen")
-            input("zum schließen irgendeine taste drücken")
+            input("sicher?")
             exit()
         elif start == "n":
             print("neustart")
@@ -78,14 +78,14 @@ while True:
             pass
         elif tage == "x":
             print("abgebrochen")
-            input("zum schließen irgendeine taste drücken")
+            input("sicher?")
             exit()
         elif ppd == "n":
             print("neustart")
             pass
         elif ppd == "x":
             print("abgebrochen")
-            input("zum schließen irgendeine taste drücken")
+            input("sicher?")
             exit()
 
         else:
@@ -142,7 +142,7 @@ while True:
 
         if start == "x":
             print("abgebrochen")
-            input("zum schließen irgendeine taste drücken")
+            input("sicher?")
             exit()
         elif start == "n":
             print("neustart")
@@ -152,14 +152,14 @@ while True:
             pass
         elif ziel == "x":
             print("abgebrochen")
-            input("zum schließen irgendeine taste drücken")
+            input("sicher?")
             exit()
         elif ppd == "n":
             print("neustart")
             pass
         elif ppd == "x":
             print("abgebrochen")
-            input("zum schließen irgendeine taste drücken")
+            input("sicher?")
             exit()
         else:
             listename = f"von {str(start)} mit {str(ppd)} % bis {str(ziel)} liste.txt"
@@ -219,7 +219,7 @@ while True:
 
         if start == "x":
             print("abgebrochen")
-            input("zum schließen irgendeine taste drücken")
+            input("sicher?")
             exit()
         elif start == "n":
             print("neustart")
@@ -229,14 +229,14 @@ while True:
             pass
         elif tage == "x":
             print("abgebrochen")
-            input("zum schließen irgendeine taste drücken")
+            input("sicher?")
             exit()
         elif ziel == "n":
             print("neustart")
             pass
         elif ziel == "x":
             print("abgebrochen")
-            input("zum schließen irgendeine taste drücken")
+            input("sicher?")
             exit()
         else:
 
@@ -296,6 +296,7 @@ while True:
             else:
                 input("zum schließen irgendeine taste drücken")
                 exit()
+
     elif auswahl == "a":
         print("du bist im variablen bereich")
         addvarnam = input("gib den namen der variable ein : ").lower()
