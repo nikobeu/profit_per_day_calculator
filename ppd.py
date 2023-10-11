@@ -14,7 +14,7 @@ jsonfile = (rf"{str(parent_directory)}\safe_data.json")
 if not os.path.exists(rf"{str(parent_directory)}\start_ppd.cmd"):
     file = open("start_ppd.cmd", "a")
     file.write(f"@echo off\n\n")
-    file.write(rf"python {str(parent_directory)}\ppd.py")
+    file.write(rf"python {str(script_path)}")
     file.close()
     os.system(nstart)
     exit()
