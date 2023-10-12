@@ -92,7 +92,7 @@ while True:
                 print("neustart")
             elif lango == "ENG":
                 print("restarting")
-            pass
+            break
         elif sauswahl == "ja":
             liste = True
         elif sauswahl == "yes":
@@ -111,6 +111,20 @@ while True:
                 tageudatump = True
             elif tagejn == "d":
                 datump = True
+            elif tagejn == "x":
+                if lango == "DE":
+                    print("abgebrochen")
+                    input("sicher?")
+                elif lango == "ENG":
+                    print("stopped")
+                    input("are you sure ?")
+                exit()
+            elif tagejn == "n":
+                if lango == "DE":
+                    print("neustart")
+                elif lango == "ENG":
+                    print("restarting")
+                break
             else:
                 tagep = True
         else:
@@ -137,7 +151,7 @@ while True:
                 print("neustart")
             elif lango == "ENG":
                 print("restarting")
-            pass
+            break
         elif auswahl == "b":
             if lango == "DE":
                 print("du bist im berechnen bereich")
@@ -165,13 +179,13 @@ while True:
                     print("neustart")
                 elif lango == "ENG":
                     print("restarting")
-                pass
+                break
             elif tage == "n":
                 if lango == "DE":
                     print("neustart")
                 elif lango == "ENG":
                     print("restarting")
-                pass
+                break
             elif tage == "x":
                 if lango == "DE":
                     print("abgebrochen")
@@ -185,7 +199,7 @@ while True:
                     print("neustart")
                 elif lango == "ENG":
                     print("restarting")
-                pass
+                break
             elif ppd == "x":
                 if lango == "DE":
                     print("abgebrochen")
@@ -268,7 +282,7 @@ while True:
                     neustart = input("n für neustart, irgendeine andere taste zum verlassen : ").lower()
 
                 if neustart == "n":
-                    pass
+                    break
                 else:
                     if lango == "DE":
                         input("zum schließen irgendeine taste drücken")
@@ -304,13 +318,13 @@ while True:
                     print("neustart")
                 elif lango == "ENG":
                     print("restarting")
-                pass
+                break
             elif ziel == "n":
                 if lango == "DE":
                     print("neustart")
                 elif lango == "ENG":
                     print("restarting")
-                pass
+                break
             elif ziel == "x":
                 if lango == "DE":
                     print("abgebrochen")
@@ -324,7 +338,7 @@ while True:
                     print("neustart")
                 elif lango == "ENG":
                     print("restarting")
-                pass
+                break
             elif ppd == "x":
                 if lango == "DE":
                     print("abgebrochen")
@@ -434,7 +448,7 @@ while True:
                         neustart = input("n for restart, any other key to exit: ").lower()
 
                     if neustart == "n":
-                        pass
+                        break
                     else:
                         if lango == "DE":
                             input("zum schließen irgendeine taste drücken")
@@ -464,20 +478,16 @@ while True:
                 exit()
             elif start == "n":
                 if lango == "DE":
-                    print("abgebrochen")
-                    input("sicher?")
+                    print("neustart")
                 elif lango == "ENG":
-                    print("Canceled")
-                    input("Are you sure?")
-                exit()
+                    print("restarting")
+                break
             elif tage == "n":
                 if lango == "DE":
-                    print("abgebrochen")
-                    input("sicher?")
+                    print("neustart")
                 elif lango == "ENG":
-                    print("Canceled")
-                    input("Are you sure?")
-                exit()
+                    print("restarting")
+                break
             elif tage == "x":
                 if lango == "DE":
                     print("abgebrochen")
@@ -488,12 +498,10 @@ while True:
                 exit()
             elif ziel == "n":
                 if lango == "DE":
-                    print("abgebrochen")
-                    input("sicher?")
+                    print("neustart")
                 elif lango == "ENG":
-                    print("Canceled")
-                    input("Are you sure?")
-                exit()
+                    print("restarting")
+                break
             elif ziel == "x":
                 if lango == "DE":
                     print("abgebrochen")
@@ -593,7 +601,7 @@ while True:
                 elif lango == "ENG":
                     neustart = input("n for restart, any other key to exit: ").lower()
                 if neustart == "n":
-                    pass
+                    break
                 else:
                     if lango == "DE":
                         input("zum schließen irgendeine taste drücken")
@@ -647,7 +655,7 @@ while True:
                 neustart = input("n for restart, any other key to exit: ").lower()
 
             if neustart == "n":
-                pass
+                break
             else:
                 if lango == "DE":
                     input("zum schließen irgendeine taste drücken")
@@ -665,7 +673,7 @@ while True:
                 neustart = input("Press n to try again: ").lower()
 
             if neustart == "n":
-                pass
+                break
             else:
                 if lango == "DE":
                     input("zum schließen irgendeine taste drücken")
